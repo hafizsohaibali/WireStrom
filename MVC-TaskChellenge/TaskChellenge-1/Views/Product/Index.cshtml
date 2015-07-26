@@ -1,0 +1,36 @@
+﻿@model List<TaskChellenge_1.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayOut.cshtml";
+}
+<div>
+    <a href="@Url.Action("CreateNewProduct")">Create a New Product</a>
+</div>
+<br />
+<br />
+<div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price($)</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (TaskChellenge_1.Models.Product Product in Model)
+            {
+                <tr>
+                    <td>@Product.Name</td>
+                    <td>@Product.Description</td>
+                    <td>@Product.Price</td>
+                    <td>@Html.ActionLink("View", "ViewProduct", new { id = Product.Id })</td>
+                    <td>@Html.ActionLink("Add Comment", "AddComment", new { id = Product.Id })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

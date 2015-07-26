@@ -1,0 +1,45 @@
+﻿@model TaskChellenge_1.Models.Product
+
+@{
+    ViewBag.Title = "CreateProduct";
+    Layout = "~/Views/Shared/_LayOut.cshtml";
+}
+
+<h2>Create Product</h2>
+@using (Html.BeginForm())
+{
+    <div>
+
+        @if (ViewData["SuccessMessgae"] != null)
+        { 
+            <div>@ViewData["SuccessMessgae"]</div>
+        }
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>
+                    @Html.TextBoxFor(x => x.Name)
+                    @Html.ValidationMessageFor(x => x.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>
+                    @Html.TextBoxFor(x => x.Description)
+                    @Html.ValidationMessageFor(x => x.Description)
+                </td>
+            </tr>
+            <tr>
+                <td>Price($)</td>
+                <td>
+                    @Html.TextBoxFor(x => x.Price)
+                    @Html.ValidationMessageFor(x => x.Price)
+                </td>
+            </tr>
+        </table>
+
+        <br />
+        <input type="submit" value="Create" />
+        <a href="@Url.Action("Index")">Back</a>
+    </div>
+}

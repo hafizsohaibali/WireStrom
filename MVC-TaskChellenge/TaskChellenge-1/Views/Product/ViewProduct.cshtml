@@ -1,0 +1,48 @@
+﻿@model TaskChellenge_1.Models.Product
+
+@{
+    ViewBag.Title = "ViewProduct";
+    Layout = "~/Views/Shared/_LayOut.cshtml";
+}
+
+<div>
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>@Model.Description</td>
+        </tr>
+        <tr>
+            <td>Price($)</td>
+            <td>@Model.Price</td>
+        </tr>
+    </table>
+    <div>Comments</div>
+    @if (Model.UserComments == null || Model.UserComments.Count == 0)
+    { 
+        <div>Products has no comments</div>
+    }
+    else
+    {
+     
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            @foreach (TaskChellenge_1.Models.UserComment UserComment in Model.UserComments)
+            {
+                <tr>
+                    <td>@UserComment.UserName</td>
+                    <td>@UserComment.Comment</td>
+                </tr>
+            }
+        </table>
+    }
+
+</div>

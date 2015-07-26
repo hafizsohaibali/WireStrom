@@ -1,0 +1,46 @@
+﻿@model TaskChellenge_1.Models.UserComment
+
+@{
+    ViewBag.Title = "AddComment";
+    Layout = "~/Views/Shared/_LayOut.cshtml";
+    TaskChellenge_1.Models.Product product = (TaskChellenge_1.Models.Product)ViewData["Product"];
+}
+@using (Html.BeginForm())
+{
+    <h2>Add Comment</h2>
+    <div>
+        @if (ViewData["SuccessMessgae"] != null)
+        { 
+            <div>@ViewData["SuccessMessgae"]</div>
+        }
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>@product.Name</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>@product.Description</td>
+            </tr>
+            <tr>
+                <td>Price($)</td>
+                <td>@product.Price</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>User Name</td>
+                <td>@Html.TextBoxFor(x => x.UserName)</td>
+                <td>@Html.ValidationMessageFor(x => x.UserName)</td>
+            </tr>
+            <tr>
+                <td>Comment</td>
+                <td>@Html.TextBoxFor(x => x.Comment)</td>
+                <td>@Html.ValidationMessageFor(x => x.Comment)</td>
+            </tr>
+        </table>
+        <br />
+        <input type="submit" value="Add Comment" />
+        <a href="@Url.Action("Index")">Back</a>
+    </div>
+}
